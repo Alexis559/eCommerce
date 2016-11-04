@@ -13,36 +13,81 @@ class ModelProduits {
     private $hauteur;
     private $univers;
 
-    public function getMarque() {
-        return $this->marque;
+    public function getNumProduit() {
+        return $this->numProduit;
     }
 
-    public function setMarque($marque2) {
-        $this->marque = $marque2;
+    public function setNumProduit($numProduit) {
+        $this->numProduit = $numProduit;
     }
 
-    public function getCouleur() {
-        return $this->couleur;
+    public function getNomProduit() {
+        return $this->nomProduit;
     }
 
-    public function setCouleur($couleur2) {
-        $this->couleur = $couleur2;
+    public function setNomProduit($nomProduit) {
+        $this->nomProduit = $nomProduit;
     }
 
-    public function getImmatriculation() {
-        return $this->immatriculation;
+    public function getQteStock() {
+        return $this->qteStock;
     }
 
-    public function setImmatriculation($immatriculation2) {
-        $this->immatriculation = $immatriculation2;
+    public function setImmatriculation($qteStock) {
+        $this->qteStock = $qteStock;
     }
 
+    public function getCategorie() {
+        return $this->categorie;
+    }
+
+    public function setCategorie($categorie) {
+        $this->categorie = $categorie;
+    }
+    
+    public function getPrix() {
+        return $this->prix;
+    }
+
+    public function setPrix($prix) {
+        $this->prix = $prix;
+    }
+    
+    public function getPoids() {
+        return $this->poids;
+    }
+
+    public function setPoids($poids) {
+        $this->poids = $poids;
+    }
+    
+    public function getHauteur() {
+        return $this->hauteur;
+    }
+
+    public function setHauteur($hauteur) {
+        $this->hauteur = $hauteur;
+    }
+    
+    public function getUnivers() {
+        return $this->univers;
+    }
+
+    public function setUnivers($univers) {
+        $this->univers = $univers;
+    }
+    
     // un constructeur
-    public function __construct($m = NULL, $c = NULL, $i = NULL) {
-        if (!is_null($m) && !is_null($c) && !is_null($i)) {
-            $this->marque = $m;
-            $this->couleur = $c;
-            $this->immatriculation = $i;
+    public function __construct($num = NULL, $nom = NULL, $qte = NULL, $cat = NULL, $prix = NULL, $poi = NULL, $haut = NULL, $univ = NULL) {
+        if (!is_null($num) && !is_null($nom) && !is_null($qte) && !is_null($cat) && !is_null($prix) && !is_null($poi) && !is_null($haut) && !is_null($univ)) {
+            $this->numProduit = $num;
+            $this->nomProduit = $nom;
+            $this->qteStock = $qte;
+            $this->categorie = $cat;
+            $this->prix = $prix;
+            $this->poids = $poi;
+            $this->hauteur = $haut;
+            $this->univers = $univ;
         }
     }
 
@@ -53,12 +98,12 @@ class ModelProduits {
 
     static public function getAllProduits() {
         try {
-            $rep = Model::$pdo->query('SELECT * FROM voiture');
-            $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelVoiture');
-            $tab_voit = $rep->fetchAll();
-            return $tab_voit;
+            $rep = Model::$pdo->query('SELECT * FROM Produits');
+            $rep->setFetchMode(PDO::FETCH_CLASS, 'ModelProduits');
+            $tab_prod = $rep->fetchAll();
+            return $tab_prod;
         } catch (PDOException $e) {
-            echo('Error tout cassé ( /!\ method getAllProducts /!\ )');
+            echo('Error tout casse ( /!\ method getAllProducts /!\ )');
         }
     }
 }
