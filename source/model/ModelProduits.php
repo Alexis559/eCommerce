@@ -91,11 +91,7 @@ class ModelProduits {
         }
     }
 
-    // une methode d'affichage.
-    /* public function afficher() {
-      echo "Marque: " . $this->getMarque() . " Couleur: " . $this->getCouleur() . " Immatriculation: " . $this->getImmatriculation();
-      } */
-
+    //methode d'affichage de tous les produits
     static public function getAllProduits() {
         try {
             $rep = Model::$pdo->query('SELECT * FROM Produits');
