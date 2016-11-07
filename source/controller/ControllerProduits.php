@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
     // chargement du modèle
 require_once File::build_path(array("model", "ModelProduits.php"));
 
@@ -28,18 +27,7 @@ class ControllerProduits {
         }
     }
     
-}
+}    
 
-=======
-    require_once ('../model/ModelProduis.php');
-    
-    class ControllerProduits {
-        
-        public static function readAll() {
-            $tabe_p= Model::getAllProduits();
-            require_once File::build_path(array('view','Produits','Produits.php'));
-        }
-    }
->>>>>>> 5c5750d4267ca1d75b0862396d073de3344b6111
 ?>
 
