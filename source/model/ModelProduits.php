@@ -99,9 +99,38 @@ class ModelProduits {
             $tab_prod = $rep->fetchAll();
             return $tab_prod;
         } catch (PDOException $e) {
-            echo('Error tout casse ( /!\ method getAllProducts /!\ )');
+            echo('Error tout casse ( /!\ method getAllProducts() /!\ )');
         }
     }
+    
+    static public function getProduitByNum($numProduit) {
+        $sql = "SELECT * from Produits WHERE numProduit=:num_produit";
+        try {
+            // Préparation de la requête
+            $req_prep = Model::$pdo->prepare($sql);
+
+            $values = array(
+                "num_produit" => $numProduit,
+                    //nomdutag => valeur, ...
+            );
+            // On donne les valeurs et on exécute la requête	 
+            $req_prep->execute($values);
+
+            // On récupère les résultats comme précédemment
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelProduits');
+            $tab_prod = $req_prep->fetchAll();
+        } catch (PDOException $e) {
+            echo('Error tout casse ( /!\ method getProduitByNum() /!\ )');
+        }
+
+        // Attention, si il n'y a pas de résultats, on renvoie false
+        if (empty($tab_prod)) {
+            return false;
+        }
+
+        return $tab_prod[0];
+    }
+    
 }
 
 ?>
