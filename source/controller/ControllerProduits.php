@@ -15,13 +15,13 @@ class ControllerProduits {
     public static function read() {
         $f = ModelProduits::getProduitByNum($_GET['numProduit']);
         if ($f == false) {
-            $controller = "produits";
+            $controller = "figurines";
             $view = "error";
             $pagetitle = "Erreur";
             require File::build_path(array("view", "view.php"));
         } else {
-            $controller = "produits";
-            $view = "detail";
+            $controller = "figurines";
+            $view = "detailProduit";
             $pagetitle = "Détails figurines";
             require File::build_path(array("view", "view.php"));
         }
