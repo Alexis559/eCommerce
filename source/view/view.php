@@ -16,6 +16,7 @@
                 <nav>
                     <ul id="navigation">
                         <li style="display: inline;"><a href="index.php?action=readAll">Liste des figurines</a></li>
+                        <li style="display: inline;"><a href="index.php?action=create">Ajouter une figurine</a></li>
                     </ul>
                 </nav>
             </div>

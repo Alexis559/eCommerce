@@ -3,14 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/ann2/sancheza/public_html/eCommerce/source/controller/routeur.php</file>
-            <file>file:/home/ann2/sancheza/public_html/eCommerce/source/model/ModelProduits.php</file>
-            <file>file:/home/ann2/sancheza/public_html/eCommerce/source/controller/ControllerProduits.php</file>
-            <file>file:/home/ann2/sancheza/public_html/eCommerce/source/config/Conf.php</file>
-            <file>file:/home/ann2/sancheza/public_html/eCommerce/source/view/view.php</file>
-            <file>file:/home/ann2/sancheza/public_html/eCommerce/source/model/Model.php</file>
-            <file>file:/home/ann2/sancheza/public_html/eCommerce/source/index.php</file>
-            <file>file:/home/ann2/sancheza/public_html/eCommerce/source/view/figurines/list.php</file>
+            <file>file:/C:/Users/Alexis/Documents/GitHub/eCommerce/source/controller/ControllerProduits.php</file>
+            <file>file:/C:/Users/Alexis/Documents/GitHub/eCommerce/source/view/figurines/createProduit.php</file>
+            <file>file:/C:/Users/Alexis/Documents/GitHub/eCommerce/source/view/view.php</file>
+            <file>file:/C:/Users/Alexis/Documents/GitHub/eCommerce/source/model/Model.php</file>
+            <file>file:/C:/Users/Alexis/Documents/GitHub/eCommerce/source/controller/routeur.php</file>
+            <file>file:/C:/Users/Alexis/Documents/GitHub/eCommerce/source/view/figurines/created.php</file>
+            <file>file:/C:/Users/Alexis/Documents/GitHub/eCommerce/source/model/ModelProduits.php</file>
+            <file>file:/C:/Users/Alexis/Documents/GitHub/eCommerce/source/config/Conf.php</file>
+            <file>file:/C:/Users/Alexis/Documents/GitHub/eCommerce/source/index.php</file>
+            <file>file:/C:/Users/Alexis/Documents/GitHub/eCommerce/source/view/figurines/list.php</file>
         </group>
     </open-files>
 </project-private>

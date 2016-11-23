@@ -78,9 +78,8 @@ class ModelProduits {
     }
     
     // un constructeur
-    public function __construct($num = NULL, $nom = NULL, $qte = NULL, $cat = NULL, $prix = NULL, $poi = NULL, $haut = NULL, $univ = NULL) {
-        if (!is_null($num) && !is_null($nom) && !is_null($qte) && !is_null($cat) && !is_null($prix) && !is_null($poi) && !is_null($haut) && !is_null($univ)) {
-            $this->numProduit = $num;
+    public function __construct($nom = NULL, $qte = NULL, $cat = NULL, $prix = NULL, $poi = NULL, $haut = NULL, $univ = NULL) {
+        if (!is_null($nom) && !is_null($qte) && !is_null($cat) && !is_null($prix) && !is_null($poi) && !is_null($haut) && !is_null($univ)) {
             $this->nomProduit = $nom;
             $this->qteStock = $qte;
             $this->categorie = $cat;
@@ -129,6 +128,25 @@ class ModelProduits {
         }
 
         return $tab_prod[0];
+    }
+    
+    public function save() {
+        $sql = "INSERT INTO Produits (nomProduit, qteStock, categorie, prix, poids, hauteur, univers) VALUES (:nom_tag, :qte_tag, :cat_tag, :prix_tag, :poids_tag, :haut_tag, :univ_tag)";
+        try {
+            $req_prep = Model::$pdo->prepare($sql);
+            $values = array(
+                "nom_tag" => $this->getNomProduit(),
+                "qte_tag" => $this->getQteStock(),
+                "cat_tag" => $this->getCategorie(),
+                "prix_tag" => $this->getPrix(),
+                "poids_tag" => $this->getPoids(),
+                "haut_tag" => $this->getHauteur(),
+                "univ_tag" => $this->getUnivers(),
+            );
+            $req_prep->execute($values);
+        } catch (PDOException $e) {
+            echo('Error tout casse ( /!\ methode save /!\ )');
+        }
     }
     
 }

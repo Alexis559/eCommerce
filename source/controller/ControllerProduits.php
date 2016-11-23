@@ -27,6 +27,23 @@ class ControllerProduits {
         }
     }
     
+    public static function create() {
+        $controller = "figurines";
+        $view = "createProduit";
+        $pagetitle = "Creer une figurine";
+        require File::build_path(array("view","view.php"));
+    }
+    
+    public static function created() {
+        $controller = "figurines";
+        $view = "created";
+        $pagetitle = "Creation figurine";
+        $figurine = new ModelProduits($_POST['nomProduit'], $_POST['qteStock'], $_POST['categorie'], $_POST['prix'], $_POST['poids'], $_POST['hauteur'], $_POST['univers']);
+        $figurine->save();
+        $tab_f = ModelProduits::getAllProduits();
+        require File::build_path(array("view", "view.php"));
+    }
+    
 }    
 
 ?>
