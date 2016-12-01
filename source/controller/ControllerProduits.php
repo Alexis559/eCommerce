@@ -44,6 +44,15 @@ class ControllerProduits {
         require File::build_path(array("view", "view.php"));
     }
     
+    public static function delete() {
+        $produits = ModelProduits::getProduitByNum($_GET['numProduit']);
+        $produits->delete();
+        $controller = "figurines";
+        $view = "deleted";
+        $pagetitle = "Produit supprimé";
+        require File::build_path(array("view", "view.php"));
+    }   
+    
 }    
 
 ?>

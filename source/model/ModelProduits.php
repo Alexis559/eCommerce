@@ -149,6 +149,19 @@ class ModelProduits {
         }
     }
     
+    public function delete() {
+        $sql = "DELETE FROM Produits WHERE Produits.numProduit = :numProd_tag";
+        try {
+            $req_prep = Model::$pdo->prepare($sql);
+            $values = array(
+                "numProd_tag" => $this->getNumProduit(),
+            );
+            $req_prep->execute($values);
+        } catch (PDOException $e) {
+            echo('Error tout casse ( /!\ method delete /!\ )');
+        }
+    }    
+    
 }
 
 ?>
