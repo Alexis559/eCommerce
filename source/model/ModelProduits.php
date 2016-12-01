@@ -17,10 +17,6 @@ class ModelProduits {
         return $this->numProduit;
     }
 
-    public function setNumProduit($numProduit) {
-        $this->numProduit = $numProduit;
-    }
-
     public function getNomProduit() {
         return $this->nomProduit;
     }
