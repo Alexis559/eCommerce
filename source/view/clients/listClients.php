@@ -3,7 +3,7 @@
         foreach ($tab_clients as $client) {
           $numClientHTML = htmlspecialchars($client->getNumClient());
           $numClientURL = rawurlencode($client->getNumClient());
-          $lien = "http://infolimon.iutmontp.univ-montp2.fr/~sancheza/eCommerce/source/index.php?controller=clients&action=read&numProduit=";
+          $lien = "http://infolimon.iutmontp.univ-montp2.fr/~sancheza/eCommerce/source/index.php?controller=clients&action=read&numClient=";
            echo '<p class="fig" style="display: none;"> N°Client: <a href="'. $lien . $numClientURL . '">' . $numClientHTML . '</a></p>';
         }        
         ?>

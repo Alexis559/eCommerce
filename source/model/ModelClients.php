@@ -107,8 +107,6 @@ class ModelClients {
 
         if (!is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($adresse) && !is_null($telephone) && !is_null($dateNaissance) && !is_null($sexe) && !is_null($login) && !is_null($mdp) && !is_null($isAdmin)) {
 
-            if (!is_null($isAdmin) && !is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($adresse) && !is_null($telephone) && !is_null($dateNaissance) && !is_null($sexe) && !is_null($login) && !is_null($mdp)) {
-
                 $this->nomClient = $nomClient;
                 $this->prenomClient = $prenomClient;
                 $this->mail = $mail;
@@ -118,15 +116,12 @@ class ModelClients {
                 $this->sexe = $sexe;
                 $this->login = $login;
                 $this->mdp = $mdp;
-
                 $this->isAdmin = $isAdmin;
 
-                $this->admin = $isAdmin;
-
-            }
         }
     }
-    
+
+
     static public function getAllClients() {
         try {
             $rep = Model::$pdo->query('SELECT * FROM Clients');
@@ -137,7 +132,25 @@ class ModelClients {
             echo('Error tout casse ( /!\ method getAllClients() /!\ )');
         }
     }
-    
+
+    static function getNumClientByLogin($login, $mot_de_passe_chiffre){
+        $sql = "SELECT * FROM Clients WHERE Clients.login = :log_tag AND Clients.mdp = :mdpChiff_tag";
+        try {
+            $req_prep = Model::$pdo->prepare($sql);
+            $values = array(
+                "log_tag" => $login,
+                "mdpChiff_tag" => $mot_de_passe_chiffre,
+            );
+            $req_prep->execute($values);
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelClients');
+            $tab_cl = $req_prep->fetchAll();
+
+        } catch (PDOException $e) {
+            echo('Error tout casse ( /!\ method checkPassword /!\ )');
+        }
+            return $tab_cl[0]->getNumClient();
+    }
+
     static public function getClientByNum($numClient) {
         $sql = "SELECT * from Clients WHERE numClient=:num_client";
         try {
@@ -146,7 +159,6 @@ class ModelClients {
 
             $values = array(
                 "num_client" => $numClient,
-                    //nomdutag => valeur, ...
             );
             // On donne les valeurs et on exécute la requête	 
             $req_prep->execute($values);
@@ -169,8 +181,6 @@ class ModelClients {
     public function save() {
 
        $sql = "INSERT INTO Clients (nom, prenom, mail, adresse, telephone, dateNaissance, sexe, login, mdp, isAdmin) VALUES (:nom_tag, :pre_tag, :mail_tag, :adr_tag, :tel_tag, :age_tag, :sex_tag, :log_tag, :mdp_tag, :isA_tag)";
-
-        $sql = "INSERT INTO Clients (nom, prenom, mail, adresse, telephone, dateNaissance, sexe, login, mdp, isAdmin) VALUES (:nom_tag, :pre_tag, :mail_tag, :adr_tag, :tel_tag, :age_tag, :sex_tag, :log_tag, :mdp_tag, :isA_tag)";
 
         try {
             $req_prep = Model::$pdo->prepare($sql);
@@ -205,7 +215,26 @@ class ModelClients {
         }
     }  
 
-    
+    public static function checkPassword($login,$mot_de_passe_chiffre){
+        $sql = "SELECT * FROM Clients WHERE Clients.login = :log_tag AND Clients.mdp = :mdpChiff_tag";
+        try {
+            $req_prep = Model::$pdo->prepare($sql);
+            $values = array(
+                "log_tag" => $login,
+                "mdpChiff_tag" => $mot_de_passe_chiffre,
+            );
+            $req_prep->execute($values);
+            $req_prep->setFetchMode(PDO::FETCH_CLASS, 'ModelClients');
+            $tab_cl = $req_prep->fetchAll();
+            if(empty($tab_cl)){
+                return false;
+            }else{
+                return true;
+            }
+        } catch (PDOException $e) {
+            echo('Error tout casse ( /!\ method checkPassword /!\ )');
+        }
+    }
             
        
 }

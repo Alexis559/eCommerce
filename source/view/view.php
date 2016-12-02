@@ -24,8 +24,8 @@
 		</div>
 		<div id="connexion">
 			<nav>
-				<div><a href="#">Connexion</a></div>
-				<div><a href="#">S'inscrire</a></div>
+				<div><a href="index.php?action=connect&controller=clients">Connexion</a></div>
+				<div><a href="index.php?action=create&controller=clients">S'inscrire</a></div>
 			</nav>
 		</div>
 	</header>
