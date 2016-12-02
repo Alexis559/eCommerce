@@ -16,9 +16,9 @@
 		</div>
 		<div id="menu">
 			<nav>
-				<div><a href="index.php?action=readAll">Liste des figurines</a></div>
-				<div><a href="index.php?action=create">Ajouter une figurine</a></div>
-				<div><a href="#">Test3</a></div>
+				<div><a href="index.php?action=readAll&controller=produits">Liste des figurines</a></div>
+				<div><a href="index.php?action=create&controller=produits">Ajouter une figurine</a></div>
+				<div><a href="index.php?action=create&controller=clients">Client</a></div>
 				<div><a href="#">Test4</a></div>
 			</nav>
 		</div>

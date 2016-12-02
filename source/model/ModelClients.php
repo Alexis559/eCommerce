@@ -2,7 +2,7 @@
 
 require_once File::build_path(array("model", "Model.php"));
 
-class ModelClient {
+class ModelClients {
 
     private $numClient;
     private $nomClient;
@@ -102,20 +102,19 @@ class ModelClient {
     
 
     //constructeur
-    function __construct($isAdmin = NULL, $numClient = NULL, $nomClient = NULL, $prenomClient = NULL, $mail = NULL, $adresse = NULL, $telephone = NULL, $dateNaissance = NULL, $sexe = NULL, $login = NULL, $mdp = NULL) {
+    function __construct($nomClient = NULL, $prenomClient = NULL, $mail = NULL, $adresse = NULL, $telephone = NULL, $dateNaissance = NULL, $sexe = NULL, $login = NULL, $mdp = NULL, $isAdmin = NULL) {
         
-        if (!is_null($isAdmin) && !is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($adresse) && !is_null($telephone) && !is_null($dateNaissance) && !is_null($sexe) && !is_null($login) && !is_null($mdp)) {
-        $this->isAdmin = $isAdmin;
-        $this->numClient = $numClient;
-        $this->nomClient = $nomClient;
-        $this->prenomClient = $prenomClient;
-        $this->mail = $mail;
-        $this->adresse = $adresse;
-        $this->telephone = $telephone;
-        $this->dateNaissance = $dateNaissance;
-        $this->sexe = $sexe;
-        $this->login = $login;
-        $this->mdp = $mdp;
+        if (!is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($adresse) && !is_null($telephone) && !is_null($dateNaissance) && !is_null($sexe) && !is_null($login) && !is_null($mdp) && !is_null($isAdmin)) {
+            $this->nomClient = $nomClient;
+            $this->prenomClient = $prenomClient;
+            $this->mail = $mail;
+            $this->adresse = $adresse;
+            $this->telephone = $telephone;
+            $this->dateNaissance = $dateNaissance;
+            $this->sexe = $sexe;
+            $this->login = $login;
+            $this->mdp = $mdp;
+            $this->isAdmin = $isAdmin;
         }
     }
     
@@ -159,7 +158,7 @@ class ModelClient {
     }
     
     public function save() {
-        $sql = "INSERT INTO Clients (nomClient, prenomClient, mail, adresse, telephone, dateNaissance, sexe, login, mdp, isAdmin) VALUES (:nom_tag, :pre_tag, :mail_tag, :adr_tag, :tel_tag, :age_tag, :sex_tag, :log_tag, :mdp_tag, :isA_tag)";
+       $sql = "INSERT INTO Clients (nom, prenom, mail, adresse, telephone, dateNaissance, sexe, login, mdp, isAdmin) VALUES (:nom_tag, :pre_tag, :mail_tag, :adr_tag, :tel_tag, :age_tag, :sex_tag, :log_tag, :mdp_tag, :isA_tag)";
         try {
             $req_prep = Model::$pdo->prepare($sql);
             $values = array(
@@ -181,7 +180,7 @@ class ModelClient {
     }
     
     public function delete() {
-        $sql = "DELETE FROM Clients WHERE Clients.numClients = :numCl_tag";
+        $sql = "DELETE FROM Clients WHERE Clients.numClient = :numCl_tag";
         try {
             $req_prep = Model::$pdo->prepare($sql);
             $values = array(
