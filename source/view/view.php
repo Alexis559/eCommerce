@@ -22,12 +22,23 @@
 				<div><a href="#">Test4</a></div>
 			</nav>
 		</div>
-		<div id="connexion">
-			<nav>
-				<div><a href="index.php?action=connect&controller=clients">Connexion</a></div>
-				<div><a href="index.php?action=create&controller=clients">S'inscrire</a></div>
-			</nav>
-		</div>
+		<?php
+			if (isset($_SESSION['login'])) {
+				echo ('<div id="connexion">
+					<nav>
+						<div><p>Bonjour, ' . $_SESSION['login'] . '</div>
+						<div><a href="index.php?action=deconnect&controller=clients">deconnexion</a></div>
+					</nav>
+				</div>');
+			}else{
+				echo ('<div id="connexion">
+					<nav>
+						<div><a href="index.php?action=connect&controller=clients">Connexion</a></div>
+						<div><a href="index.php?action=create&controller=clients">S inscrire</a></div>
+					</nav>
+				</div>');
+			}
+		?>
 	</header>
 	 <?php
         $filepath = File::build_path(array("view", $controller, "$view.php"));

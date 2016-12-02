@@ -93,7 +93,7 @@ class ControllerClients {
 
     public static function deconnect(){
         session_destroy();
-        //faire redirection page accueil
+       header('Location: /~sancheza/eCommerce/source');
     }
     
 }    
