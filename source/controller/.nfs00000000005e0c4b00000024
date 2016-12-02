@@ -41,15 +41,9 @@ class ControllerClients {
         $pagetitle = "Creation compte";
         //Verification mot de passe1 et mot de passe2 coincident si oui on chiffre et on envoie a la bdd
         if( strcmp ( $_POST['mdp'] , $_POST['mdpConf'] ) == 0 ){
-<<<<<<< HEAD
            $mdp_crypt = Security::chiffrer($_POST['mdp']);
             if(strcmp ( $_POST['sexe'] , "homme" ) == 0){ //0 = homme et 1 = femme
                 $client = new ModelClients($_POST['nomClient'], $_POST['prenomClient'], $_POST['mail'], $_POST['adresse'], $_POST['telephone'], $_POST['dateNaissance'], 0, $_POST['login'], $mdp_crypt, 0);
-=======
-           //$mdp_crypt = Security::chiffrer($_POST['mdp']);
-            if(strcmp ( $_POST['sexe'] , "homme" ) == 0){ //0 = homme et 1 = femme
-                $client = new ModelClients($_POST['nomClient'], $_POST['prenomClient'], $_POST['mail'], $_POST['adresse'], $_POST['telephone'], $_POST['dateNaissance'], 0, $_POST['login'], $_POST['mdp'], 0);
->>>>>>> bae40f4f59a420c047c14612621acba09c5cd808
             }else{
                 $client = new ModelClients($_POST['nomClient'], $_POST['prenomClient'], $_POST['mail'], $_POST['adresse'], $_POST['telephone'], $_POST['dateNaissance'], 1, $_POST['login'], $mdp_crypt, 0);
             }
