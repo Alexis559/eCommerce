@@ -107,22 +107,23 @@ class ModelClients {
 
         if (!is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($adresse) && !is_null($telephone) && !is_null($dateNaissance) && !is_null($sexe) && !is_null($login) && !is_null($mdp) && !is_null($isAdmin)) {
 
-        if (!is_null($isAdmin) && !is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($adresse) && !is_null($telephone) && !is_null($dateNaissance) && !is_null($sexe) && !is_null($login) && !is_null($mdp)) {
+            if (!is_null($isAdmin) && !is_null($nomClient) && !is_null($prenomClient) && !is_null($mail) && !is_null($adresse) && !is_null($telephone) && !is_null($dateNaissance) && !is_null($sexe) && !is_null($login) && !is_null($mdp)) {
 
-            $this->nomClient = $nomClient;
-            $this->prenomClient = $prenomClient;
-            $this->mail = $mail;
-            $this->adresse = $adresse;
-            $this->telephone = $telephone;
-            $this->dateNaissance = $dateNaissance;
-            $this->sexe = $sexe;
-            $this->login = $login;
-            $this->mdp = $mdp;
+                $this->nomClient = $nomClient;
+                $this->prenomClient = $prenomClient;
+                $this->mail = $mail;
+                $this->adresse = $adresse;
+                $this->telephone = $telephone;
+                $this->dateNaissance = $dateNaissance;
+                $this->sexe = $sexe;
+                $this->login = $login;
+                $this->mdp = $mdp;
 
-            $this->isAdmin = $isAdmin;
+                $this->isAdmin = $isAdmin;
 
-            $this->admin = $isAdmin;
+                $this->admin = $isAdmin;
 
+            }
         }
     }
     

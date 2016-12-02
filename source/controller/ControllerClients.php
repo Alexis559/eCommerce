@@ -45,7 +45,7 @@ class ControllerClients {
            $mdp_crypt = Security::chiffrer($_POST['mdp']);
             if(strcmp ( $_POST['sexe'] , "homme" ) == 0){ //0 = homme et 1 = femme
                 $client = new ModelClients($_POST['nomClient'], $_POST['prenomClient'], $_POST['mail'], $_POST['adresse'], $_POST['telephone'], $_POST['dateNaissance'], 0, $_POST['login'], $mdp_crypt, 0);
-
+            }
            //$mdp_crypt = Security::chiffrer($_POST['mdp']);
             if(strcmp ( $_POST['sexe'] , "homme" ) == 0){ //0 = homme et 1 = femme
                 $client = new ModelClients($_POST['nomClient'], $_POST['prenomClient'], $_POST['mail'], $_POST['adresse'], $_POST['telephone'], $_POST['dateNaissance'], 0, $_POST['login'], $_POST['mdp'], 0);
@@ -55,11 +55,11 @@ class ControllerClients {
             }
             $client->save();
             $tab_clients = ModelClients::getAllClients();
-            //require File::build_path(array("view", "view.php"));
+            require File::build_path(array("view", "view.php"));
         }else{
             $view = "error";
             $pagetitle = "Erreur";
-           // require File::build_path(array("view", "view.php"));
+            require File::build_path(array("view", "view.php"));
         }       
     }
     
