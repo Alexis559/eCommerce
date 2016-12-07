@@ -14,7 +14,11 @@ class ControllerClients {
     }
     
     public static function read() {
-        $client = ModelClients::getClientByNum($_GET['numClient']);
+        if(isset($_SESSION['login'])){
+            $client = ModelClients::getClientByLogin($_SESSION['login']);
+        }else{
+            $client = ModelClients::getClientByNum($_GET['numClient']);
+        }
         if ($client == false) {
             $controller = "clients";
             $view = "error";
@@ -79,21 +83,30 @@ class ControllerClients {
         $mdp = $_POST['mdp'];
         $mdp_crypt = Security::chiffrer($_POST['mdp']);
         $login = $_POST['login'];
-        if(!(ModelClients::checkPassword($mdp, $mdp_crypt))){
-            //erroooooooooor
+        if((ModelClients::checkPassword($mdp, $mdp_crypt))){
+            $_SESSION['login'] = $login;
+            $client = ModelClients::getClientByLogin($login);
+            if(($client->getIsAdmin()) == 1){
+                $_SESSION['admin'] = true;
+            }else{
+                $_SESSION['admin'] = false;
+            }
+            $controller = "clients";
+            $view = "detailClients";
+            $pagetitle = "Détails compte";
+            require File::build_path(array("view", "view.php"));
+        }else{
+            $controller = "error";
+            $view = "errorUserInc";
+            $pagetitle = "Compte inconnu";
+            require File::build_path(array("view", "view.php"));
         }
-        $_SESSION['login'] = $login;
-        $num = ModelClients::getNumClientByLogin($login, $mdp_crypt);
-        $client = ModelClients::getClientByNum($num);
-        $controller = "clients";
-        $view = "detailClients";
-        $pagetitle = "Détails compte";
-        require File::build_path(array("view", "view.php"));
+       
     }
 
     public static function deconnect(){
         session_destroy();
-        //faire redirection page accueil
+        header('Location: /~sancheza/eCommerce/source');
     }
     
 }    
