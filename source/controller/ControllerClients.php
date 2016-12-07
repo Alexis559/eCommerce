@@ -106,7 +106,11 @@ class ControllerClients {
 
     public static function deconnect(){
         session_destroy();
+<<<<<<< HEAD
         header('Location: /~sancheza/eCommerce/source');
+=======
+       header('Location: /~sancheza/eCommerce/source');
+>>>>>>> 6e758b4192b6f8fb305ee1869bfd966e45f81ae2
     }
     
 }    
